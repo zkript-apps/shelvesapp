@@ -6,9 +6,11 @@ import { T_APP } from "@/types/global";
 import { useRouter } from 'next/navigation';
 import useCreateApp from "@/hooks/useCreateApp";
 import useAuthStore from "@/store/useAuthStore";
+import { useQueryClient } from '@tanstack/react-query';
 
 const CreateItem = () => {
     const router = useRouter();
+    const queryClient = useQueryClient();
     const { register, handleSubmit, formState: { errors } } = useForm<T_APP>();
     const { mutate, isLoading } = useCreateApp();
     const role = useAuthStore((state) => state.role);
@@ -16,6 +18,7 @@ const CreateItem = () => {
         const callbackReq = {
             onSuccess: (data: string | object) => {
                 if (typeof data === "object") {
+                    queryClient.invalidateQueries({ queryKey: ['apps'] });
                     toast.success("Success adding app");
                     router.push("/home");
                 } else {

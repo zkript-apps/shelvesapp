@@ -33,6 +33,7 @@ const AppEdit = ({ appId }: { appId: number }) => {
       onSuccess: (data: string | object) => {
         if (typeof data === "object") {
           queryClient.invalidateQueries({ queryKey: ['app', appId] });
+          queryClient.invalidateQueries({ queryKey: ['apps'] });
           toast.success("Success updating app");
           router.push("/home");
         } else {

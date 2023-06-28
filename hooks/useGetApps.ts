@@ -22,7 +22,7 @@ export async function getApps(
 function useGetApps(type: ENUM_STATUS) {
     const token = Cookies.get('p_token');
     const query = useQuery(
-        ['items', type],
+        ['apps', type],
         () =>
             getApps(
                 token as string,
