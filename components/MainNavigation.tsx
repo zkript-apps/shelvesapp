@@ -20,7 +20,7 @@ const user = {
 
 const MainNavigation = () => {
     const role = useAuthStore((state) => state.role);
-    if(role === 'ASSISTANT' && userNavigation.length > 2) {
+    if(role === 'ASSISTANT' && userNavigation.length > 1) {
         userNavigation.shift();
     }
     return (
