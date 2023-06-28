@@ -64,7 +64,7 @@ export default function Active() {
                               />
                               <Link href={item.playStoreUrl} target="_blank" onClick={(e) => e.stopPropagation()} className="text-blue-600 hover:underline transition">Play Store URL</Link>
                               <DocumentDuplicateIcon
-                                className="ml-1.5 h-5 w-5 flex-shrink-0 text-gray-400 invisible group-hover:visible hover:text-gray-600 transition"
+                                className="ml-1.5 h-5 w-5 flex-shrink-0 text-gray-400 md:invisible group-hover:visible hover:text-gray-600 transition"
                                 aria-hidden="true"
                                 onClick={(e) => {
                                   e.preventDefault();
