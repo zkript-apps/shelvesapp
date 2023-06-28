@@ -10,7 +10,7 @@ import { useSearchParams, redirect } from 'next/navigation'
 
 export default function UserForm({ headerTitle }: { headerTitle: 'Register' | 'Login' }) {
     const searchParams = useSearchParams()
-    const password = searchParams.get('password');
+    const password = searchParams?.get('password');
     if(headerTitle === "Register" && (!password || password !== "@Patrick22")) {
         redirect('/');
     }

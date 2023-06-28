@@ -14,7 +14,7 @@ import useGetItemsCount from '@/hooks/useGetAppsCount'
 import { PlayIcon, ClockIcon, LinkIcon, EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 
 export default function Pending() {
-  const { data: apps, isLoading: isItemsLoading } = useGetApps('PENDING');
+  const { data: apps, isLoading: isItemsLoading, refetch } = useGetApps('PENDING');
   const { data: itemsCount, isLoading: isItemsCountLoading } = useGetItemsCount();
   if (typeof apps === 'string') {
     toast.error(apps);
@@ -29,10 +29,10 @@ export default function Pending() {
         <div className="px-4 sm:px-0">
           <div className="flex items-center">
             <h2 className="flex-1 text-lg font-medium text-gray-900">Apps</h2>
-            <Link href="/home/active" prefetch={false} className="flex-none flex gap-1 items-center rounded-md bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-500 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-200 disabled:opacity-50 disabled:cursor-progress">
+            <button onClick={() => refetch()} className="flex-none flex gap-1 items-center rounded-md bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-500 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-200 disabled:opacity-50 disabled:cursor-progress">
               <ArrowPathIcon className="h-5 w-5" />
               Refresh
-            </Link>
+            </button>
           </div>
           {!isItemsCountLoading ? <Tabs count={itemsCount} /> : (
             <div className="pt-8 flex flex-col lg:flex-row gap-2 animate-pulse">

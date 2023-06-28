@@ -10,7 +10,7 @@ const Tabs = ({ count = { active: 0, pending: 0 } }: { count: T_APPS_COUNT }) =>
         { name: 'Active', href: '/home/active', count: count.active, existActive: ['/home', '/home/active'] },
         { name: 'Pending', href: '/home/pending', count: count.pending, existActive: ['/home/pending'] },
     ]
-    const activeTabName = tabs.find((tab) => tab.existActive.includes(pathname))?.name;
+    const activeTabName = pathname ? tabs.find((tab) => tab.existActive.includes(pathname))?.name : "";
     return (
         <>
             <div className="sm:hidden">

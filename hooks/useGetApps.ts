@@ -10,6 +10,7 @@ export async function getApps(
         `/api/app/${type.toLowerCase()}`,
         {
             method: 'GET',
+            next: { revalidate: 5 },
             headers: {
                 'content-type': 'application/json',
                 'Authorization': `Bearer ${token}`,
