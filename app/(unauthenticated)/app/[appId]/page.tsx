@@ -7,5 +7,5 @@ export const metadata = {
 
 export default function AppPage({ params }: { params: { appId: number } }) {
     const appId = params.appId;
-    return <></>
+    return <span>test</span>
 }

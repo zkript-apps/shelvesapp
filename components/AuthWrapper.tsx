@@ -43,7 +43,7 @@ const AuthWrapper = ({ children }: Props) => {
         } else {
             router.push('/');
         }
-    }, [mutate, router])
+    }, [mutate, router, updateAuthStore])
     return (
         <>
             {pathname !== "/logout" ? !isLoading && isLoaded ? children : <LoadingSkeleton/> : children}
