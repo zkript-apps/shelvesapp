@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 require('dotenv').config({
-  path: process.env.NODE_ENV === "production" ? '../../.env' : './.env',
+  path: process.env.NODE_ENV === "production" ? '../.env' : './.env',
 });
 const nextConfig = {
   images: {
