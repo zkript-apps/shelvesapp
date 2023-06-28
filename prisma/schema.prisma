@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("PS_MYSQL_URL")
+  shadowDatabaseUrl = env("PS_SHADOW_MYSQL_URL")
+  relationMode      = "prisma"
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  role      Role      @default(ASSISTANT)
+  App       App[]
+}
+
+model App {
+  id           Int       @id @default(autoincrement())
+  creatorId    Int
+  name         String    @db.VarChar(255)
+  redirectLink String    @db.VarChar(255)
+  enabled      Boolean   @default(true)
+  playStoreUrl String    @db.VarChar(255)
+  createdAt    DateTime  @default(now())
+  deletedAt    DateTime?
+  updatedAt    DateTime  @updatedAt
+  status       AppStatus @default(PENDING)
+  creator      User      @relation(fields: [creatorId], references: [id])
+
+  @@index([creatorId])
+}
+
+enum AppStatus {
+  ACTIVE
+  PENDING
+}
+
+enum Role {
+  ADMIN
+  DEV
+  ASSISTANT
+}
