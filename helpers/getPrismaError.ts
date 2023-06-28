@@ -9,7 +9,7 @@ const getPrismaError = (e: any) => {
             error = `Error code ${e.code}`;
         }
     } else {
-        error = `Unknown error found`;
+        error = String(e);
     }
     return error;
 };
