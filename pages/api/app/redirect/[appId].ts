@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const ip = forwarded ? forwarded.split(",")[0] : "";
     ipinfoWrapper.lookupIp(ip as string).then(async (response: IPinfo) => {
       let item = null;
-      if(response.country === "PH" || response.country === "VD") {
+      if(response.countryCode === "PH" || response.countryCode === "VD") {
           try {
             const result = await prisma.app.findFirst({
                 where: {
@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             item = getPrismaError(e);
         }
       } else {
-          item = "https://vt288.win/promote-game/?cid=726197&languageCode=&type=9&currency=VND&aid=fblive&SelfOperatedGameId=4001&amount=10000"
+          item = "https://cherry-charm.vercel.app/"
       }
       res.json(item)
     }).catch((e) => {
