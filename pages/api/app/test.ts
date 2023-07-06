@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const forwarded: string = req.headers["x-forwarded-for"] as string;
     const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress
     ipinfoWrapper.lookupIp(ip as string).then((response: IPinfo) => {
-      res.json(req.headers)
+      res.json(response)
     }).catch(() => {
       res.json("Error")
     });
