@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     ipinfoWrapper.lookupIp(ip as string).then((response: IPinfo) => {
       res.json({ response })
     }).catch((e) => {
-      res.json({ e, ip })
+      res.json({ e })
     });
   }
 }
