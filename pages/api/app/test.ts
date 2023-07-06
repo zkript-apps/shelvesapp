@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import IPinfoWrapper, { IPinfo, AsnResponse } from "node-ipinfo";
 
-const ipinfoWrapper = new IPinfoWrapper("MY_TOKEN");
+const ipinfoWrapper = new IPinfoWrapper("2e75cee26618a3");
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
