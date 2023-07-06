@@ -1,7 +1,7 @@
 import React from 'react'
 
 export async function getServerSideProps({ req }: any) {
-  const forwarded = req.headers["X-Real-IP"]
+  const forwarded = req.headers["X-Forwarded-For"]
   return {
     props: {
       ip: forwarded,
